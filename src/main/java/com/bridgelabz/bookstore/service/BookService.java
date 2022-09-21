@@ -21,9 +21,6 @@ public class BookService implements IBookService{
     BookRepository bookRepository;
 
     @Autowired
-    MailService mailService;
-
-    @Autowired
     TokenUtil tokenUtil;
 
     @Autowired
