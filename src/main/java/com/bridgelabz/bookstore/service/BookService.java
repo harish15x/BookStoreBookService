@@ -57,8 +57,9 @@ public class BookService implements IBookService{
     public List<BookModel> getBookData(String token) {
         boolean isBookPresent = restTemplate.getForObject("http://localhost:8095/bookstore/validate/" + token, Boolean.class);
         if(isBookPresent){
-            List<BookModel> isNotesPresent = bookRepository.findAll();
-            return isNotesPresent;
+            List<BookModel> isBookAvailable = bookRepository.findAll();
+            if (isBookAvailable.size() > 0)
+                return isBookAvailable;
         }
         throw new BookNotFoundException(400,"token is wrong");
     }
